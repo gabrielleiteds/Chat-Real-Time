@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Real Time</title>
+
+    <!--import socket io and jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <form id="chat">
+        <input type="text" name="username" placeholder="Digite seu usuário">
+        <div class="messages"></div>
+        <input type="text" name="message" placeholder="Digite sua mensagem">
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script type="text/javascript">
+        var socket = io('http://localhost:3000'); 
+    </script>
 </body>
 </html>
