@@ -22,8 +22,13 @@
 
     <script type="text/javascript">
         var socket = io('http://localhost:3000');
+        
+        function renderMessage(message) {
+            $('.messages').append(
+                '<div class="message"><strong>'+ message.author +'</strong>:'+ message.message +' </div>'); 
+        }
 
-        $('#chat').submit(function(event) {
+        $('#chat').submit(function(event) { 
             event.preventDefault(); 
 
             //catching values username and message of form
@@ -36,8 +41,15 @@
                 //object containing author and your message 
                 var messageObject = { author: author, message: message };
                 
-                socket.emit('sendMessage', messageObject); 
+                renderMessage(messageObject);
+                alert('Sua mensagem foi enviada');
+
+                socket.emit('sendMessage', messageObject);
             }
+            else {
+                alert('falha ao enviar mensagem')
+        
+            }; 
         })
     </script>
 </body>
