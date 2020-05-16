@@ -22,6 +22,23 @@
 
     <script type="text/javascript">
         var socket = io('http://localhost:3000');
+
+        $('#chat').submit(function(event) {
+            event.preventDefault(); 
+
+            //catching values username and message of form
+            var author = $('input[name=username]').val(); 
+            var message = $('input[name=message]').val(); 
+
+            //validation
+            if(author.length && message.length) 
+            {
+                //object containing author and your message 
+                var messageObject = { author: author, message: message };
+                
+                socket.emit('sendMessage', messageObject); 
+            }
+        })
     </script>
 </body>
 </html>

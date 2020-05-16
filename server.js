@@ -21,7 +21,11 @@ app.use('/', (req, res) => {
 })
 
 io.on('connection', socket => {
-    console.log(`socket conectado: ${socket.id}`) 
+    console.log(`socket conectado: ${socket.id}`);
+    
+    socket.on('sendMessage', data => {
+        console.log(data); 
+    })
 }) 
 
 
